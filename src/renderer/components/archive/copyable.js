@@ -32,6 +32,7 @@ const Wrapper = styled(Flex)`
   margin-left: 2px;
   line-height: 1.2;
   flex: 1;
+  white-space: pre-wrap;
 
   &:hover {
     button {

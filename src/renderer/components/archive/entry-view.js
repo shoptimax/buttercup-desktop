@@ -9,7 +9,7 @@ import { Translate } from '../../../shared/i18n';
 import EmptyView from '../empty-view';
 import Copyable from './copyable';
 import EntryIcon from './entry-icon';
-import { Wrapper } from './entry-input';
+import { wrapper as TextareaWrapper } from './entry-textarea';
 
 const getNonRemoveableFields = fieldsArr =>
   fieldsArr.filter(field => !field.removeable);
@@ -61,11 +61,11 @@ const FieldsView = ({ fields, entry, t }) => (
           <Otherwise>{field.property}</Otherwise>
         </Choose>
       </LabelWrapper>
-      <Wrapper
+      <TextareaWrapper
         isTitle={field.property === 'title' && field.removeable === false}
       >
         <Copyable isSecret={field.secret}>{field.value}</Copyable>
-      </Wrapper>
+      </TextareaWrapper>
     </Row>
   </For>
 );
@@ -86,6 +86,7 @@ const EntryView = props => {
       />
       <Translate i18nKey="entry.custom-fields" parent={Heading} />
       <With fields={getRemoveableFields(entry.facade.fields)}>
+        <With className={TextareaWrapper} />
         <Choose>
           <When condition={fields.length > 0}>
             <FieldsView {...props} fields={fields} />

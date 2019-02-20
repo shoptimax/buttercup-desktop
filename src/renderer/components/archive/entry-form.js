@@ -10,6 +10,7 @@ import Heading from './heading';
 import Input from './entry-input';
 import EntryIcon from './entry-icon';
 import { LabelWrapper, MetaWrapper, Row } from './entry-view';
+import Textarea from './entry-textarea';
 
 function getPlaceholder(propertyName) {
   switch (propertyName) {
@@ -67,13 +68,37 @@ const renderMeta = (
                   </Otherwise>
                 </Choose>
               </LabelWrapper>
-              <Field
-                name={`${member}.value`}
-                type={field.secret ? 'password' : 'text'}
-                component={Input}
-                placeholder={t(getPlaceholder(field.property))}
-                isBig={isTitle}
-              />
+              <Choose>
+                <When condition={field.removeable}>
+                  <Field
+                    name={`${member}.value`}
+                    type="text"
+                    component={Textarea}
+                    placeholder={t(getPlaceholder(field.property))}
+                    isBig={isTitle}
+                    rows="8"
+                    cols="100"
+                  />
+                </When>
+                <When condition={field.secret === 'passwort'}>
+                  <Field
+                    name={`${member}.value`}
+                    type="password"
+                    component={Input}
+                    placeholder={t(getPlaceholder(field.property))}
+                    isBig={isTitle}
+                  />
+                </When>
+                <Otherwise>
+                  <Field
+                    name={`${member}.value`}
+                    type="text"
+                    component={Input}
+                    placeholder={t(getPlaceholder(field.property))}
+                    isBig={isTitle}
+                  />
+                </Otherwise>
+              </Choose>
               <If condition={field.removeable}>
                 <Button
                   onClick={() => fields.remove(index)}
