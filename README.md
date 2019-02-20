@@ -13,6 +13,11 @@
 
 ![image](https://user-images.githubusercontent.com/3869469/35880367-6bd58770-0b86-11e8-879f-d1f9136274a9.png)
 
+## About this fork
+We have lots of entries which require quite some text, often including line breaks. So we decided to change the custom fields layout from one-line input fields to multi-line textarea fields. Here is a screenshot:
+
+![image](screens/buttercup_textareas.png)
+
 ## About
 Buttercup is a **password manager** - an assistant for helping you store all of your login credentials. Buttercup helps you keep your accounts safe and assists you when you want to log in - all you need to do is remember just one password: your **master password**.
 
